@@ -28,7 +28,7 @@ const ExpenseForm = (props) => {
         //sending expenseData up 
         props.onSaveExpenseData(expenseData);
 
-        console.log('data from expenseForm: ', expenseData);
+        //console.log('data from expenseForm: ', expenseData);
 
         //resetting 
         setTitle('');
