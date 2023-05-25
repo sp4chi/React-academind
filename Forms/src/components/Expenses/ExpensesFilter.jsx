@@ -4,7 +4,6 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
     const onSelectHandler = (e) => {
-        //console.log('year at filter component', e.target.value);
         props.year(e.target.value)
 
     };
@@ -15,6 +14,9 @@ const ExpensesFilter = (props) => {
             <div className='expenses-filter__control'>
                 <label>Filter by year</label>
                 <select value={props.setDefaultYear} onChange={onSelectHandler}>
+                    <option value='2025'>2025</option>
+                    <option value='2024'>2024</option>
+                    <option value='2023'>2023</option>
                     <option value='2022'>2022</option>
                     <option value='2021'>2021</option>
                     <option value='2020'>2020</option>
