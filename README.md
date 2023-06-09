@@ -1,1 +1,1 @@
-# React-acdemind
+# React-academind
