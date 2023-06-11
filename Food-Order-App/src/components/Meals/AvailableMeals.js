@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './AvailableSummary.module.css'
 import Card from '../UI/Card';
+import MealItem from './MealItem/MealItem';
 
 
 const DUMMY_MEALS = [
@@ -33,7 +34,12 @@ const DUMMY_MEALS = [
 const AvailableMeals = () => {
     const mealsList = DUMMY_MEALS.map((meal) => {
         return (
-            <li key={meal.id}>{meal.name}</li>
+            <MealItem
+                key={meal.id}
+                name={meal.name}
+                description={meal.description}
+                price={meal.price}
+            />
         )
     })
     return (
