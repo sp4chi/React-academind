@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import classes from './Input.module.css'
 
-const Input = ({ isValid, label, id, type, value, onChange, onBlur }) => {
+
+const Input = forwardRef(({ isValid, label, id, type, value, onChange, onBlur }, ref) => {
+    const inputRef = useRef();
+
+    // useEffect(() => {
+    //     console.log('useEffect', type);
+    //     inputRef.current.focus();
+    // }, [type]);
+    const activate = (e) => {
+        inputRef.current.focus();
+    };
+    useImperativeHandle(ref
+        ,
+        () => {
+            return {
+                focus: activate,
+            }
+        },
+        [],
+    )
+
     return (
         <div
             className={`${classes.control} ${isValid === false ? classes.invalid : ''
@@ -9,6 +29,7 @@ const Input = ({ isValid, label, id, type, value, onChange, onBlur }) => {
         >
             <label htmlFor={id}>{label}</label>
             <input
+                ref={inputRef}
                 type={type}
                 id={id}
                 value={value}
@@ -16,6 +37,6 @@ const Input = ({ isValid, label, id, type, value, onChange, onBlur }) => {
                 onBlur={onBlur}
             />
         </div>);
-}
+})
 
 export default Input;
