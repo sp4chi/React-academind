@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 const useHttp = () => {
+
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -28,7 +29,6 @@ const useHttp = () => {
         }
         setIsLoading(false);
     }, []);
-
 
     return {
         isLoading,
