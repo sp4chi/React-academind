@@ -6,11 +6,21 @@ const SimpleInput = (props) => {
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
   const nameInputRef = useRef();
 
+  //ONCHANGE HANDLER
   const nameInputChangeHandler = (e) => {
     setEnteredName(e.target.value);
-    setEnteredNameIsValid(true);
   };
 
+  //ONBLUR HANDLER
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched(true);
+
+    if (enteredName.trim().length === 0) {
+      setEnteredNameIsValid(false);
+    }
+  };
+
+  //ONSUBMIT HANDLER
   const formSubmissionHandler = (e) => {
     e.preventDefault();
 
@@ -29,6 +39,7 @@ const SimpleInput = (props) => {
 
 
   };
+
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control';
@@ -40,6 +51,7 @@ const SimpleInput = (props) => {
         <input
           ref={nameInputRef}
           value={enteredName}
+          onBlur={nameInputBlurHandler}
           onChange={nameInputChangeHandler} type='text'
           id='name'
         />
