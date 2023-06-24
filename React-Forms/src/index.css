@@ -108,3 +108,7 @@ button:disabled:active{
 .error-text {
   color: #b40e0e;
 }
+
+.error-email {
+  color: #b40e0e;
+}
