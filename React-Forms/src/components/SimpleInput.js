@@ -5,18 +5,18 @@ const SimpleInput = (props) => {
 
   const {
     value: enteredName,
-    isValid: enteredNameIsValid,
     hasError: enteredNameTouched,
     valueChangeHandler: nameInputChangeHandler, inputBlurHandler: nameInputBlurHandler,
+    isValid: enteredNameIsValid,
     reset: resetNameInput,
   } = useInput(value => value.trim() !== '');
 
   const {
     value: enteredEmail,
-    isValid: enteredEmailIsValid,
     hasError: enteredEmailTouched,
     valueChangeHandler: emailInputChangeHandler,
     inputBlurHandler: emailInputBlurHandler,
+    isValid: enteredEmailIsValid,
     reset: resetEmailInput,
   } = useInput(value => value.trim() !== '' && value.includes('@') && value.includes('.com'));
 
