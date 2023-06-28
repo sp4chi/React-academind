@@ -4,7 +4,8 @@ const input = (props) => {
         <>
             <div className={props.classes}>
                 <label htmlFor={props.id}>Last Name</label>
-                <input {...props.input}
+                <input
+                    {...props.input}
                     value={props.value}
                     onChange={props.onChange}
                     onBlur={props.onBlur}
