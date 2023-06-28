@@ -1,10 +1,13 @@
+import { StrictMode } from 'react';
 import BasicForm from './components/BasicForm';
 
 function App() {
   return (
-    <div className="app">
-      <BasicForm />
-    </div>
+    <StrictMode>
+      <div className="app">
+        <BasicForm />
+      </div>
+    </StrictMode>
   );
 }
 

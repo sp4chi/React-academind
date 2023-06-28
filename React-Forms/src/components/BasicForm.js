@@ -39,9 +39,11 @@ const BasicForm = (props) => {
 
 
   let formIsValid = false;
+
   if (enteredFirstNameIsValid && enteredLastNameIsValid && enteredEmailIsValid) {
     formIsValid = true;
   }
+
   const formSubmissionHandler = (e) => {
     e.preventDefault();
 
@@ -94,7 +96,7 @@ const BasicForm = (props) => {
         <input
           type='text'
           id='email'
-          valur={enteredEmail}
+          value={enteredEmail}
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
         />
