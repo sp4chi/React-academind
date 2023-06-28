@@ -1,5 +1,6 @@
 import React from 'react';
 import useInput from '../hooks/use-input';
+import Input from '../UI/Input';
 
 const BasicForm = (props) => {
 
@@ -64,45 +65,39 @@ const BasicForm = (props) => {
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className='control-group'>
-        <div className={firstNameInputClasses}>
-          <label htmlFor='fname'>First Name</label>
-          <input
-            type='text'
-            id='fname'
-            value={enteredFirstName}
-            onChange={firstNameChangeHandler}
-            onBlur={firstNameBlurHandler}
-          />
-          {
-            firstNameIsInvalid && <p className='error-text'>First name must not be empty</p>
-          }
-        </div>
-        <div className={lastNameInputClasses}>
-          <label htmlFor='lname'>Last Name</label>
-          <input
-            type='text'
-            id='lname'
-            value={enteredLastName}
-            onChange={lastNameChangeHandler}
-            onBlur={lastNameBlurHandler}
-          />
-          {
-            lastNameIsInvalid && <p className='error-text'>Last name must not be empty</p>
-          }
-        </div>
-      </div>
-      <div className={emailInputClasses}>
-        <label htmlFor='email'>E-Mail Address</label>
-        <input
-          type='text'
-          id='email'
+        <Input
+          input={{
+            type: 'text',
+            id: 'fname',
+          }}
+          classes={firstNameInputClasses}
+          value={enteredFirstName}
+          onChange={firstNameChangeHandler}
+          onBlur={firstNameBlurHandler}
+          isInvalid={firstNameIsInvalid}
+        />
+        <Input
+          input={{
+            type: 'text',
+            id: 'lname',
+          }}
+          classes={lastNameInputClasses}
+          value={enteredLastName}
+          onChange={lastNameChangeHandler}
+          onBlur={lastNameBlurHandler}
+          isInvalid={lastNameIsInvalid}
+        />
+        <Input
+          input={{
+            type: 'text',
+            id: 'email',
+          }}
+          classes={emailInputClasses}
           value={enteredEmail}
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
+          isInvalid={emailIsInvalid}
         />
-        {
-          emailIsInvalid && <p className='error-text'>Please enter valid email.</p>
-        }
       </div>
       <div className='form-actions'>
         <button disabled={!formIsValid}>Submit</button>
