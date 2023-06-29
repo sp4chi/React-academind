@@ -6,12 +6,15 @@ import MealItem from './MealItem/MealItem';
 const AvailableMeals = () => {
 
     const [loadedMeals, setLoadedMeals] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMeals = async (e) => {
+
             const response = await fetch('https://react-http-sending-post-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json');
 
             const data = await response.json();
+
             const loadedData = [];
             for (const meal in data) {
                 loadedData.push({
@@ -21,11 +24,21 @@ const AvailableMeals = () => {
                     price: data[meal].price
                 });
             }
+
             setLoadedMeals(loadedData);
+            setIsLoading(false);
         };
 
         fetchMeals();
     }, []);
+
+    if (isLoading) {
+        return (
+            <section className={classes.MealsLoading}>
+                <p>Loading...</p>
+            </section>
+        )
+    }
 
     const mealsList = loadedMeals.map((meal) => {
         return (
