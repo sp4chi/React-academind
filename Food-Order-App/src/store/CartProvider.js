@@ -86,7 +86,6 @@ const CartProvider = (props) => {
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler
     };
-    console.log('state', cartContext.items);
     return (
         <CartContext.Provider value={cartContext}>
             {props.children}
