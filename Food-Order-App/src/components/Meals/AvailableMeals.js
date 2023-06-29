@@ -7,12 +7,16 @@ const AvailableMeals = () => {
 
     const [loadedMeals, setLoadedMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [httpError, setHttpError] = useState(null);
 
     useEffect(() => {
-        const fetchMeals = async (e) => {
+        const fetchMeals = async () => {
 
             const response = await fetch('https://react-http-sending-post-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json');
 
+            if (!response.ok) {
+                throw new Error(`Error! Error code ${response.status}`);
+            }
             const data = await response.json();
 
             const loadedData = [];
@@ -29,8 +33,20 @@ const AvailableMeals = () => {
             setIsLoading(false);
         };
 
-        fetchMeals();
+        fetchMeals().catch((error) => {
+            setIsLoading(false)
+            setHttpError(error.message)
+        });
+
     }, []);
+
+    if (httpError) {
+        return (
+            <section className={classes.MealsError}>
+                <p>{httpError}</p>
+            </section>
+        )
+    }
 
     if (isLoading) {
         return (
@@ -39,6 +55,7 @@ const AvailableMeals = () => {
             </section>
         )
     }
+
 
     const mealsList = loadedMeals.map((meal) => {
         return (
