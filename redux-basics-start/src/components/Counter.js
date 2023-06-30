@@ -8,7 +8,7 @@ const Counter = () => {
 
   //getting the state from store
   const counter = useSelector((state) => state.counter.counter);
-  const showCounter = useSelector((state) => state.showCounter.showCounter);
+  const showCounter = useSelector((state) => state.counter.showCounter);
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggle());
   };
