@@ -1,30 +1,33 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
-import { cartActions } from '../../store/cart-slice';
+
+
 
 const Cart = (props) => {
-  const amount = useSelector(state => console.log(state.cart))
-  const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cart.items);
 
-  const addItemHandler = () => {
-    dispatch(cartActions.add(1))
-  };
-
-  const removeItemHandler = () => {
-    dispatch(cartActions.remove(1));
-  };
+  const cartList = (
+    <ul>
+      {cartItems.map(item =>
+        <CartItem
+          key={item.id}
+          item={{
+            id: item.id,
+            title: item.name,
+            quantity: item.quantity,
+            total: item.totalPrice,
+            price: item.price
+          }}
+        />
+      )}
+    </ul>
+  )
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
-      <ul>
-        <CartItem
-          item={{ title: 'Test Item', quantity: `${amount}`, total: 18, price: 6 }}
-          onAdd={addItemHandler}
-          onRemove={removeItemHandler}
-        />
-      </ul>
+      {cartList}
     </Card>
   );
 };
