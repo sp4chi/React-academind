@@ -8,7 +8,7 @@ export const fetchCartData = () => {
         'https://react-shopping-cart-de08a-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json'
       );
       if (!response.ok) {
-        throw new Error('Error fetchin data!');
+        throw new Error('Error fetching data!');
       }
 
       const data = await response.json();
