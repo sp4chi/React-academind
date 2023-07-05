@@ -22,14 +22,14 @@ import ProductDetail from './pages/ProductDetail';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: '/products', element: <Products /> },
+      { path: '', element: <Home /> },
+      { path: 'products', element: <Products /> },
       {
-        path: '/products/:productId',
+        path: 'products/:productId',
         element: <ProductDetail />,
       },
     ],
