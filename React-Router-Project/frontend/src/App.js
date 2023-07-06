@@ -6,6 +6,7 @@ import Root from './Pages/Root';
 import NewEvent from './Pages/NewEvent';
 import EventDetail from './Pages/EventDetail';
 import EditEvent from './Pages/EditEvent';
+import EventsNavigationLayout from './Pages/EventsNavigationLayout';
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -31,6 +32,7 @@ import EditEvent from './Pages/EditEvent';
 //DONE
 // 7. Output the ID of the selected event on the EventDetailPage
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
+//DONE
 
 function App() {
   const router = createBrowserRouter([
@@ -39,10 +41,16 @@ function App() {
       element: <Root />,
       children: [
         { index: true, element: <Home /> },
-        { path: 'events', element: <Events /> },
-        { path: 'events/new', element: <NewEvent /> },
-        { path: '/events/:eventId', element: <EventDetail /> },
-        { path: '/events/:eventId/edit', element: <EditEvent /> },
+        {
+          path: 'events',
+          element: <EventsNavigationLayout />,
+          children: [
+            { index: true, element: <Events /> },
+            { path: 'new', element: <NewEvent /> },
+            { path: ':eventId', element: <EventDetail /> },
+            { path: ':eventId/edit', element: <EditEvent /> },
+          ],
+        },
       ],
     },
   ]);
