@@ -1,6 +1,6 @@
 // Challenge / Exercise
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Events from './Pages/Events';
+import Events, { loader } from './Pages/Events';
 import Home from './Pages/Home';
 import Root from './Pages/Root';
 import NewEvent from './Pages/NewEvent';
@@ -48,16 +48,7 @@ function App() {
             {
               index: true,
               element: <Events />,
-              loader: async () => {
-                const response = await fetch('http://localhost:8080/events');
-
-                if (!response.ok) {
-                  //
-                } else {
-                  const resData = await response.json();
-                  return resData;
-                }
-              },
+              loader: loader,
             },
             { path: 'new', element: <NewEvent /> },
             { path: ':eventId', element: <EventDetail /> },
