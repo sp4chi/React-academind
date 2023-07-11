@@ -1,13 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { json } from 'react-router-dom';
+import EventItem from '../components/EventItem';
 
 const EventDetail = () => {
-  const params = useParams();
-
-  return (
-    <>
-      <h1>Event Detail</h1>
-      <p>{params.eventId}</p>
-    </>
-  );
+  return <EventItem />;
 };
 export default EventDetail;
+
+export const loader = async ({ request, params }) => {
+  const id = params.eventsId;
+  const response = await fetch('http://localhost:8080/events/' + id);
+  if (!response.ok) {
+    throw json(
+      { message: 'Could not fetch details for selected event.' },
+      {
+        status: 500,
+      }
+    );
+  }
+  return response;
+};
