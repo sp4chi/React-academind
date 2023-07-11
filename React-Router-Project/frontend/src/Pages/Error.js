@@ -1,3 +1,4 @@
+import MainNavigation from '../components/MainNavigation';
 import PageContent from '../components/PageContent';
 import { useRouteError } from 'react-router-dom';
 
@@ -9,7 +10,9 @@ const ErrorPage = () => {
 
   //server error
   if (error.status === 500) {
-    message = JSON.parse(error.data).message;
+    //json parse required for method 2 error handling
+    //message = JSON.parse(error.data).message;
+    message = error.data.message;
   }
 
   //for not supported path
@@ -19,9 +22,12 @@ const ErrorPage = () => {
   }
 
   return (
-    <PageContent title={title}>
-      <p>{message}</p>
-    </PageContent>
+    <>
+      <MainNavigation />
+      <PageContent title={title}>
+        <p>{message}</p>
+      </PageContent>
+    </>
   );
 };
 
