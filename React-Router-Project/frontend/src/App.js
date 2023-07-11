@@ -7,6 +7,7 @@ import NewEvent from './Pages/NewEvent';
 import EventDetail from './Pages/EventDetail';
 import EditEvent from './Pages/EditEvent';
 import EventsNavigationLayout from './Pages/EventsNavigationLayout';
+import ErrorPage from './Pages/Error';
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -39,6 +40,7 @@ function App() {
     {
       path: '/',
       element: <Root />,
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Home /> },
         {
