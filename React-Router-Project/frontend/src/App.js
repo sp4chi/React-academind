@@ -1,10 +1,10 @@
 // Challenge / Exercise
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Events, { loader } from './Pages/Events';
+import Events, { loader as eventsLoader } from './Pages/Events';
 import Home from './Pages/Home';
 import Root from './Pages/Root';
 import NewEvent from './Pages/NewEvent';
-import EventDetail, { loader as eventDetailloader } from './Pages/EventDetail';
+import EventDetail, { loader as eventDetailLoader } from './Pages/EventDetail';
 import EditEvent from './Pages/EditEvent';
 import EventsNavigationLayout from './Pages/EventsNavigationLayout';
 import ErrorPage from './Pages/Error';
@@ -50,13 +50,13 @@ function App() {
             {
               index: true,
               element: <Events />,
-              loader: loader,
+              loader: eventsLoader,
             },
             { path: 'new', element: <NewEvent /> },
             {
               path: ':eventId',
+              loader: eventDetailLoader,
               element: <EventDetail />,
-              loader: eventDetailloader,
             },
             { path: ':eventId/edit', element: <EditEvent /> },
           ],
