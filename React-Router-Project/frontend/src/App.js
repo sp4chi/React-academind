@@ -4,7 +4,10 @@ import Events, { loader as eventsLoader } from './Pages/Events';
 import Home from './Pages/Home';
 import Root from './Pages/Root';
 import NewEvent, { action as newEventAction } from './Pages/NewEvent';
-import EventDetail, { loader as eventDetailLoader } from './Pages/EventDetail';
+import EventDetail, {
+  loader as eventDetailLoader,
+  action as deleteEventAction,
+} from './Pages/EventDetail';
 import EditEvent from './Pages/EditEvent';
 import EventsNavigationLayout from './Pages/EventsNavigationLayout';
 import ErrorPage from './Pages/Error';
@@ -60,6 +63,7 @@ function App() {
                 {
                   index: true,
                   element: <EventDetail />,
+                  action: deleteEventAction,
                 },
                 { path: 'edit', element: <EditEvent /> },
               ],
