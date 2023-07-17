@@ -52,13 +52,19 @@ function App() {
               element: <Events />,
               loader: eventsLoader,
             },
-            { path: 'new', element: <NewEvent /> },
             {
               path: ':eventId',
+              id: 'event-detail',
               loader: eventDetailLoader,
-              element: <EventDetail />,
+              children: [
+                {
+                  index: true,
+                  element: <EventDetail />,
+                },
+                { path: 'edit', element: <EditEvent /> },
+              ],
             },
-            { path: ':eventId/edit', element: <EditEvent /> },
+            { path: 'new', element: <NewEvent /> },
           ],
         },
       ],
