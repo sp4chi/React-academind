@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Events, { loader as eventsLoader } from './Pages/Events';
 import Home from './Pages/Home';
 import Root from './Pages/Root';
-import NewEvent from './Pages/NewEvent';
+import NewEvent, { action as newEventAction } from './Pages/NewEvent';
 import EventDetail, { loader as eventDetailLoader } from './Pages/EventDetail';
 import EditEvent from './Pages/EditEvent';
 import EventsNavigationLayout from './Pages/EventsNavigationLayout';
@@ -64,7 +64,7 @@ function App() {
                 { path: 'edit', element: <EditEvent /> },
               ],
             },
-            { path: 'new', element: <NewEvent /> },
+            { path: 'new', element: <NewEvent />, action: newEventAction },
           ],
         },
       ],
