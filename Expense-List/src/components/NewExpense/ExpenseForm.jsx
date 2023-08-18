@@ -1,76 +1,78 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-
 const ExpenseForm = (props) => {
-    const [enteredTitle, setTitle] = useState('')
-    const [enteredAmount, setAmount] = useState('')
-    const [enteredDate, setDate] = useState('');
-    const titleChangeHandler = (e) => {
-        setTitle(e.target.value)
-    }
-    const amountChangeHandler = (e) => {
-        setAmount(e.target.value)
+  const [enteredTitle, setTitle] = useState('');
+  const [enteredAmount, setAmount] = useState('');
+  const [enteredDate, setDate] = useState('');
+  const titleChangeHandler = (e) => {
+    setTitle(e.target.value);
+  };
+  const amountChangeHandler = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const dateChangeHandler = (e) => {
+    setDate(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
     };
 
-    const dateChangeHandler = (e) => {
-        setDate(e.target.value)
-    };
+    //sending expenseData up
+    props.onSaveExpenseData(expenseData);
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        const expenseData = {
-            title: enteredTitle,
-            amount: +enteredAmount,
-            date: new Date(enteredDate)
-        };
+    //resetting
+    setTitle('');
+    setAmount('');
+    setDate('');
+  };
 
-        //sending expenseData up 
-        props.onSaveExpenseData(expenseData);
-
-        //resetting 
-        setTitle('');
-        setAmount('');
-        setDate('');
-    };
-
-    return (<form onSubmit={submitHandler}>
-        <div className='new-expense__controls'>
-            <div className='new-expense__control'>
-                <label>Title</label>
-                <input
-                    type='text'
-                    value={enteredTitle}
-                    onChange={titleChangeHandler}
-                />
-            </div>
-            <div className='new-expense__control'>
-                <label>Amount</label>
-                <input
-                    type='text'
-                    min='0.01'
-                    step='0.01'
-                    value={enteredAmount}
-                    onChange={amountChangeHandler}
-
-                />
-            </div>
-            <div className='new-expense__control'>
-                <label>Date</label>
-                <input
-                    type='date'
-                    min='2019-05-18'
-                    max='2025-05-31'
-                    value={enteredDate}
-                    onChange={dateChangeHandler}
-                />
-            </div>
+  return (
+    <form onSubmit={submitHandler}>
+      <div className='new-expense__controls'>
+        <div className='new-expense__control'>
+          <label>Title</label>
+          <input
+            type='text'
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
-        <div className='new-expense__actions'>
-            <button type='button' onClick={props.onCancel} >Cancel</button>
-            <button type='submit'>Add Expense</button>
+        <div className='new-expense__control'>
+          <label>Amount</label>
+          <input
+            type='text'
+            min='0.01'
+            step='0.01'
+            value={enteredAmount}
+            onChange={amountChangeHandler}
+          />
         </div>
-    </form>);
-}
+        <div className='new-expense__control'>
+          <label>Date</label>
+          <input
+            type='date'
+            min='2019-05-18'
+            max='2025-05-31'
+            value={enteredDate}
+            onChange={dateChangeHandler}
+          />
+        </div>
+      </div>
+      <div className='new-expense__actions'>
+        <button type='button' onClick={props.onCancel}>
+          Cancel
+        </button>
+        <button type='submit'>Add Expense</button>
+      </div>
+    </form>
+  );
+};
 
 export default ExpenseForm;
