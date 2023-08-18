@@ -1,8 +1,11 @@
-import { Form } from 'react-router-dom';
+import { Form, useNavigate, useNavigation } from 'react-router-dom';
 import classes from './EventForm.module.css';
 
 function EventForm({ method, event }) {
-  function cancelHandler() {}
+  const navigate = useNavigate();
+  function cancelHandler() {
+    navigate();
+  }
 
   return (
     <Form method='post' className={classes.form}>
