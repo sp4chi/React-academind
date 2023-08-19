@@ -8,5 +8,16 @@
       "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "herock76@gmail.com",
+      "password": "$2a$12$NoKrUovohRCKvaFwmVA.rO40YySO6W.tQ8FCdMlAMagr1mtWnpJz2",
+      "id": "3d7aeb24-d4ca-46fe-b091-442086714175"
+    },
+    {
+      "email": "neog.anupal101@gmail.com",
+      "password": "$2a$12$hkTyaMRhVO57GB.lSzWJjOnXrlp2Jo07haSGrvUvzztQ53eUwkkzW",
+      "id": "f0c9c734-791a-4e31-9b2d-e20ddb41366a"
+    }
+  ]
 }
