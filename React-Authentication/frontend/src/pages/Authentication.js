@@ -16,12 +16,6 @@ export const action = async ({ request }) => {
   }
 
   const authData = Object.fromEntries(await request.formData());
-  console.log(authData);
-  // const data = await request.formData()
-  // const authData = {
-  //   email:data.get('email'),
-  //   password:data.get('password')
-  // }
 
   const response = await fetch('http://localhost:8080/' + mode, {
     method: 'POST',
